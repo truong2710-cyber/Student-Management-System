@@ -4,10 +4,11 @@
 #include "subject.h"
 #include "classs.h"
 using namespace std;
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
 
 int main(int argc, char** argv) {
 	//test
+	/*
 	vector<Subject> v;
 	vector<Student> vs;
 	Subject PhysicsI("Physics I","PH1110",2,5);
@@ -26,5 +27,9 @@ int main(int argc, char** argv) {
 	cout<<s1.getAcademicCaution()<<endl;
 	Classs cl1(vs);
 	cl1.deleteStudent(20190001);
+	*/
+	Classs cl1("IoT-K64");
+	cl1.readCsv("data.csv");
+	cl1.print();
 	return 0;
 }

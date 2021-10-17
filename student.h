@@ -9,6 +9,7 @@ class Student{
 		string name;
 		int ID;
 		string native_place;
+		string birthday;
 		string gender;
 		string class_name;    // lop cua sinh vien
 		vector<Subject> subjects;  // subjects of a student in this semester
@@ -23,21 +24,36 @@ class Student{
 		int not_pass=0;	// so tin chi truot
 		float fee=0;     // hoc phi ki nay
 	public:
-		Student(string name, int ID, string native_place, string gender, string class_name,vector<Subject> subjects, int cur_ac_level){
+		Student(string name, int ID, string birthday, string native_place, string gender, string class_name,vector<Subject> subjects, int cur_ac_level){
 			// ham khoi tao
 			this->name=name;
 			this->ID=ID;
+			this->birthday=birthday;
 			this->native_place=native_place;
 			this->gender=gender;
 			this->class_name=class_name;
 			this->subjects=subjects;
 			this->academic_caution=cur_ac_level;
 		}  
+		Student(string name, int ID, string birthday, string native_place, string gender, int cur_ac_level){
+			this->name=name;
+			this->ID=ID;
+			this->birthday=birthday;
+			this->native_place=native_place;
+			this->gender=gender;
+			this->academic_caution=cur_ac_level;
+		}
 		string getName(){
 			return this->name;
 		}
 		int getID(){
 			return this->ID;
+		}
+		string getBirthday(){
+			return this->birthday;
+		}
+		string getNativePlace(){
+			return this->native_place;
 		}
 		string getGender(){
 			return this->gender;

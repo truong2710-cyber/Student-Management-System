@@ -22,7 +22,7 @@ class Student{
 		string rank="";   // kem, yeu, TB yeu, TB, kha, gioi, xuat sac
 		int pass=0;		// so tin chi qua
 		int fail=0;	// so tin chi truot
-		float fee=0;     // hoc phi ki nay
+		int fee=0;     // hoc phi ki nay
 	public:
 		Student(){
 		}
@@ -97,7 +97,7 @@ class Student{
 		int getFail(){
 			return this->fail;
 		}
-		float getFee();
+		int getFee();
 		void update_scores(vector<float> scores_mid_10, vector<float> scores_final_10);               
 		// nhap diem qt va ck, dong thoi tinh toan diem thang 4, diem chu, gpa, muc canh cao, xep hang, tin chi qua, khong qua
 		void print_info();		// in ra ttin sv

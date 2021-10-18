@@ -35,3 +35,5 @@ class Classs{
 		void orderByGPA();
 		void orderByName();
 };
+
+vector<string> split (string s, string delimiter); 

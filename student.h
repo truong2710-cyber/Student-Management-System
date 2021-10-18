@@ -97,6 +97,13 @@ class Student{
 		int getFail(){
 			return this->fail;
 		}
+		int getTotalCredit(){
+			int count=0;
+			for (int i=0;i<this->subjects.size();i++){
+				count+=this->subjects[i].getCredit();
+			}
+			return count;
+		}
 		int getFee();
 		void update_scores(vector<float> scores_mid_10, vector<float> scores_final_10);               
 		// nhap diem qt va ck, dong thoi tinh toan diem thang 4, diem chu, gpa, muc canh cao, xep hang, tin chi qua, khong qua

@@ -88,6 +88,7 @@ void Student::print_info(){
 	cout<<"Native place: "<<this->native_place<<endl;
 	cout<<"Date of birth: "<<this->birthday<<endl;
 	cout<<"Gender: "<<this->gender<<endl;
+	cout<<"Total credit: "<<this->getTotalCredit()<<endl;
 	cout<<"GPA: "<<fixed<<setprecision(2)<<this->GPA<<endl;
 	cout<<"Rank: "<<this->rank<<endl;
 	cout<<"Pass: "<<this->pass<<endl;

@@ -21,9 +21,11 @@ class Student{
 		float GPA=-1;
 		string rank="";   // kem, yeu, TB yeu, TB, kha, gioi, xuat sac
 		int pass=0;		// so tin chi qua
-		int not_pass=0;	// so tin chi truot
+		int fail=0;	// so tin chi truot
 		float fee=0;     // hoc phi ki nay
 	public:
+		Student(){
+		}
 		Student(string name, int ID, string birthday, string native_place, string gender, string class_name,vector<Subject> subjects, int cur_ac_level){
 			// ham khoi tao
 			this->name=name;
@@ -34,6 +36,10 @@ class Student{
 			this->class_name=class_name;
 			this->subjects=subjects;
 			this->academic_caution=cur_ac_level;
+			this->scores_mid_10.resize(subjects.size(),-1);
+			this->scores_final_10.resize(subjects.size(),-1);
+			this->scores_final_4.resize(subjects.size(),-1);
+			this->scores_final_char.resize(subjects.size(),"X");
 		}  
 		Student(string name, int ID, string birthday, string native_place, string gender, int cur_ac_level){
 			this->name=name;
@@ -88,8 +94,8 @@ class Student{
 		int getPass(){
 			return this->pass;
 		}
-		int getNotPass(){
-			return this->not_pass;
+		int getFail(){
+			return this->fail;
 		}
 		float getFee();
 		void update_scores(vector<float> scores_mid_10, vector<float> scores_final_10);               

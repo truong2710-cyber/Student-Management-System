@@ -17,9 +17,10 @@ void Classs::deleteStudent(int ID){
 		if (students[i].getID()==ID){
 			this->students.erase(students.begin()+i);
 			class_size--;
-			break;
+			return;
 		}
 	}
+	cout<<"Error: Can not find student with ID "<<ID<<endl;
 }
 
 void Classs::print(){
@@ -27,7 +28,7 @@ void Classs::print(){
 	cout<<"----------------------------------------------------------------------------------------------------------------"<<endl;
 	cout<<"Class: "<<this->class_name<<endl;
 	cout<<"----------------------------------------------------------------------------------------------------------------"<<endl;
-	cout
+	cout<<"|"
 		<<left
 		<<setw(20)
 		<<"Name"<<"|"
@@ -49,7 +50,7 @@ void Classs::print(){
 		<<endl;
 	cout<<"----------------------------------------------------------------------------------------------------------------"<<endl;
 	for (int i=0;i<this->students.size();i++){
-	cout
+	cout<<"|"
 		<<left
 		<<setw(20)
 		<<this->students[i].getName()<<"|"
@@ -91,6 +92,7 @@ vector<string> split (string s, string delimiter) {
 
 void Classs::readCsv(string path){
 	vector<Student> list;
+	int count=0;
 	ifstream file(path);
 	if (!file.is_open()) {
 		cout<<"Error: Can not open file!";
@@ -102,6 +104,8 @@ void Classs::readCsv(string path){
 		vector<string> v=split(line,",");
 		Student student(v[0],stoi(v[1]),v[2],v[3],v[4],stoi(v[5]));
 		list.push_back(student);
+		count++;
 	}
 	this->students=list;
+	this->class_size=count;
 }

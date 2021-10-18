@@ -20,8 +20,8 @@ int main(int argc, char** argv) {
 	Student s1("Vo Van A",20191234,"14/5/2001","Ha Noi","male","IT1",v,2);
 	Student s2("Bui Thanh C",20190001,"29/9/2001","Hoa Binh","female","IoT-01-K64",v,2);
 	s1.print_info();
-	vector<float> mid_score{10,-1,9};
-	vector<float> end_score{7,9,-1};
+	vector<float> mid_score{10,7,9};
+	vector<float> end_score{7,9,8};
 	s1.update_scores(mid_score,end_score);
 	s1.print_info();
 	//cout<<s1.getFee()<<endl;
@@ -36,8 +36,9 @@ int main(int argc, char** argv) {
 	Classs cl1("IoT-01-K64",vs);
 	cl1.deleteStudent(20190001);
 	
-	//Classs cl2("IoT-K64");
-	//cl2.readCsv("data.csv");
-	//cl2.print();
+	Classs cl2("IoT-K64");
+	cl2.readCsv("data.csv");
+	cl2.orderByName();
+	cl2.print();
 	return 0;
 }

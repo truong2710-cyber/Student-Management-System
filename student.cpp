@@ -5,6 +5,16 @@
 #define fee_unit 600000
 using namespace std;
 
+string convert_GPA_to_rank(float score){
+	if (score>=3.6) return "Excellent"; 
+	if (3.2<=score) return "Very good"; 
+	if (2.5<=score) return "Good"; 
+	if (2.0<=score) return "Average"; 
+	if (1.5<=score) return "Fair"; 
+	if (1.0<=score) return "Weak"; 
+	return "Poor"; 
+}
+
 float convert_10_to_4(float score){
 	if (score>=8.5) return 4; // A, A+
 	if (8<=score) return 3.5; // B+
@@ -50,6 +60,13 @@ void Student::update_scores(vector<float> scores_mid_10, vector<float> scores_fi
 	if (count==this->scores_mid_10.size()){
 		GPA/=count_credit;
 		this->GPA=GPA;
+		this->rank=convert_GPA_to_rank(GPA);
+		if (this->academic_caution>0 && fail<=4)
+			this->academic_caution-=1;
+		if (fail>8) 
+			this->academic_caution+=1;
+		if (fail>16)
+			this->academic_caution+=2;
 	}
 }
 
@@ -75,6 +92,7 @@ void Student::print_info(){
 	cout<<"Rank: "<<this->rank<<endl;
 	cout<<"Pass: "<<this->pass<<endl;
 	cout<<"Fail: "<<this->fail<<endl;
+	cout<<"Academic caution level: "<<this->academic_caution<<endl;
 	cout<<"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
 	cout<<"|"
 		<<left

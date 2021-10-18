@@ -4,7 +4,25 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <vector>
+#include <algorithm>
 using namespace std;
+
+vector<Student> Classs::findStudentByName(string name){
+	vector<Student> result;
+	for (int i=0;i<this->students.size();i++){
+		if (this->students[i].getName()==name)
+			result.push_back(this->students[i]);
+	}
+	return result;
+}
+
+Student Classs::findStudentByID(int ID){
+	for (int i=0;i<this->students.size();i++){
+		if (this->students[i].getID()==ID)
+			return this->students[i];
+	}
+}
 
 void Classs::addStudent(Student student){
 	// ham them 1 sinh vien vao lop 
@@ -25,10 +43,13 @@ void Classs::deleteStudent(int ID){
 
 void Classs::print(){
 	// ham in danh sach lop
-	cout<<"----------------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<"----------------------------------------------------------------------------------------------------------------------"<<endl;
 	cout<<"Class: "<<this->class_name<<endl;
-	cout<<"----------------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<"----------------------------------------------------------------------------------------------------------------------"<<endl;
 	cout<<"|"
+		<<left
+		<<setw(4)
+		<<"#"<<"|"
 		<<left
 		<<setw(20)
 		<<"Name"<<"|"
@@ -48,9 +69,12 @@ void Classs::print(){
 		<<setw(22)
 		<<"Academic caution level"<<"|"
 		<<endl;
-	cout<<"----------------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<"----------------------------------------------------------------------------------------------------------------------"<<endl;
 	for (int i=0;i<this->students.size();i++){
-	cout<<"|"
+		cout<<"|"
+		<<left
+		<<setw(4)
+		<<i+1<<"|"
 		<<left
 		<<setw(20)
 		<<this->students[i].getName()<<"|"
@@ -71,7 +95,7 @@ void Classs::print(){
 		<<this->students[i].getAcademicCaution()<<"|"
 		<<endl;
 	}
-	cout<<"----------------------------------------------------------------------------------------------------------------";
+	cout<<"----------------------------------------------------------------------------------------------------------------------";
 	return;
 }
 
@@ -109,3 +133,29 @@ void Classs::readCsv(string path){
 	this->students=list;
 	this->class_size=count;
 }
+
+bool criterionName(Student s1, Student s2){
+	string name1=s1.getName(),name2=s2.getName();
+	size_t index1, index2, index3, index4;
+	index1=name1.find(" ");
+	index2=name1.rfind(" ");
+	index3=name2.find(" ");
+	index4=name2.rfind(" ");
+	if (name1.substr(index2+1)!=name2.substr(index4+1))
+		return name1.substr(index2+1)<name2.substr(index4+1);
+	else if (name1.substr(0,index1)!=name2.substr(0,index3))
+		return name1.substr(0,index1)<name2.substr(0,index3);
+	else return name1.substr(index1,index2-index1)<name2.substr(index3,index4-index3);
+}
+
+bool criterionGPA(Student s1, Student s2){
+	return s1.getGPA()>s2.getGPA();
+}
+
+void Classs::orderByGPA(){
+	sort(this->students.begin(),this->students.end(),criterionGPA);
+}
+void Classs::orderByName(){
+	sort(this->students.begin(),this->students.end(),criterionName);
+}
+

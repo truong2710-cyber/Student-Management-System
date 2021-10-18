@@ -30,4 +30,8 @@ class Classs{
 		void deleteStudent(int ID);
 		void print();
 		void readCsv(string path);
+		vector<Student> findStudentByName(string name);
+		Student findStudentByID(int ID);
+		void orderByGPA();
+		void orderByName();
 };

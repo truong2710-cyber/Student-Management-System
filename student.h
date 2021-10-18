@@ -41,13 +41,14 @@ class Student{
 			this->scores_final_4.resize(subjects.size(),-1);
 			this->scores_final_char.resize(subjects.size(),"X");
 		}  
-		Student(string name, int ID, string birthday, string native_place, string gender, int cur_ac_level){
+		Student(string name, int ID, string birthday, string native_place, string gender, int cur_ac_level,string class_name){
 			this->name=name;
 			this->ID=ID;
 			this->birthday=birthday;
 			this->native_place=native_place;
 			this->gender=gender;
 			this->academic_caution=cur_ac_level;
+			this->class_name=class_name;
 		}
 		string getName(){
 			return this->name;
@@ -104,6 +105,7 @@ class Student{
 			}
 			return count;
 		}
+		void addSubject(Subject subject);
 		int getFee();
 		void update_scores(vector<float> scores_mid_10, vector<float> scores_final_10);               
 		// nhap diem qt va ck, dong thoi tinh toan diem thang 4, diem chu, gpa, muc canh cao, xep hang, tin chi qua, khong qua

@@ -1,5 +1,6 @@
 #include "classs.h"
 #include "student.h"
+#include "program.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -17,7 +18,7 @@ vector<Student> Classs::findStudentByName(string name){
 	return result;
 }
 
-Student Classs::findStudentByID(int ID){
+Student& Classs::findStudentByID(int ID){
 	for (int i=0;i<this->students.size();i++){
 		if (this->students[i].getID()==ID)
 			return this->students[i];
@@ -115,6 +116,7 @@ vector<string> split (string s, string delimiter) {
 }
 
 void Classs::readCsv(string path){
+	// doc file csv de co duoc cac thong tin co ban ve sv trong lop: ten, MSSV, que quan, gioi tinh, ngay sinh, muc canh cao hien tai
 	vector<Student> list;
 	int count=0;
 	ifstream file(path);
@@ -126,12 +128,27 @@ void Classs::readCsv(string path){
 	getline(file,line);
 	while(getline(file,line)){
 		vector<string> v=split(line,",");
-		Student student(v[0],stoi(v[1]),v[2],v[3],v[4],stoi(v[5]));
+		Student student(v[0],stoi(v[1]),v[2],v[3],v[4],stoi(v[5]),this->class_name);
 		list.push_back(student);
 		count++;
 	}
 	this->students=list;
 	this->class_size=count;
+}
+
+void Classs::getRegisterInfoFromCsv(string path){
+	ifstream file(path);
+	if (!file.is_open()) {
+		cout<<"Error: Can not open file!";
+		return;
+	}
+	string line;
+	getline(file,line);
+	while(getline(file,line)){
+		vector<string> v=split(line,",");
+		Subject subject=this->program.findSubject(v[2]);
+		this->findStudentByID(stoi(v[1])).addSubject(subject);
+	}
 }
 
 bool criterionName(Student s1, Student s2){
@@ -158,4 +175,6 @@ void Classs::orderByGPA(){
 void Classs::orderByName(){
 	sort(this->students.begin(),this->students.end(),criterionName);
 }
+
+
 

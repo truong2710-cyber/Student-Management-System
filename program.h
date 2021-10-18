@@ -8,7 +8,9 @@ class Program{
 		vector<Subject> subjects;
 		string name;
 	public:
+		Program();
 		Program(string name);
 		void print();
 		void readCsv(string path);
+		Subject findSubject(string code);
 };

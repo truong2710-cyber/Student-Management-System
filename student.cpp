@@ -1,5 +1,6 @@
 #include "student.h"
 #include "subject.h"
+#include "program.h"
 #include <iostream>
 #include <iomanip>
 #define fee_unit 600000
@@ -152,4 +153,8 @@ void Student::print_info(){
 	}
 	cout<<"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
 	cout<<"*Note: -1 or X mean currently unavailable."<<endl;
+}
+
+void Student::addSubject(Subject subject){
+	this->subjects.push_back(subject);
 }

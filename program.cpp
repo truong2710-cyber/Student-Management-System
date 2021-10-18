@@ -10,7 +10,8 @@ using namespace std;
 Program::Program(string name){
 	this->name=name;
 }
-
+Program::Program(){
+}
 void Program::readCsv(string path){
 	string line;
 	ifstream file(path);
@@ -68,4 +69,12 @@ void Program::print(){
 			<<endl;
 	}
 	cout<<"-------------------------------------------------------------------------------------------------------------------------"<<endl;
+}
+
+Subject Program::findSubject(string code){
+	for (int i=0;i<this->subjects.size();i++){
+		if (this->subjects[i].getCode()==code)
+			return this->subjects[i];
+	}
+	cout<<"Error: Can not find subject with code "<<code<<" in education program!"<<endl;
 }

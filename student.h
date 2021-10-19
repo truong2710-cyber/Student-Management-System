@@ -49,6 +49,7 @@ class Student{
 			this->gender=gender;
 			this->academic_caution=cur_ac_level;
 			this->class_name=class_name;
+			
 		}
 		string getName(){
 			return this->name;
@@ -106,6 +107,10 @@ class Student{
 			return count;
 		}
 		void addSubject(Subject subject);
+		void addMid10(float score);
+		void addFinal10(float score);
+		void addFinal4(float score);
+		void addFinalChar(string score);
 		int getFee();
 		void update_scores(vector<float> scores_mid_10, vector<float> scores_final_10);               
 		// nhap diem qt va ck, dong thoi tinh toan diem thang 4, diem chu, gpa, muc canh cao, xep hang, tin chi qua, khong qua

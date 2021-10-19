@@ -18,11 +18,13 @@ vector<Student> Classs::findStudentByName(string name){
 	return result;
 }
 
-Student& Classs::findStudentByID(int ID){
+Student* Classs::findStudentByID(int ID){
 	for (int i=0;i<this->students.size();i++){
-		if (this->students[i].getID()==ID)
-			return this->students[i];
+		if (this->students[i].getID()==ID){
+			return &this->students[i];
+		}	
 	}
+	return NULL;
 }
 
 void Classs::addStudent(Student student){
@@ -96,7 +98,7 @@ void Classs::print(){
 		<<fixed<<setprecision(2)<<this->students[i].getGPA()<<"|"
 		<<endl;
 	}
-	cout<<"-----------------------------------------------------------------------------------------------------";
+	cout<<"-----------------------------------------------------------------------------------------------------"<<endl;
 	return;
 }
 
@@ -146,8 +148,14 @@ void Classs::getRegisterInfoFromCsv(string path){
 	getline(file,line);
 	while(getline(file,line)){
 		vector<string> v=split(line,",");
+		Student* student=this->findStudentByID(stoi(v[1]));
+		if (student==NULL) continue;
 		Subject subject=this->program.findSubject(v[2]);
-		this->findStudentByID(stoi(v[1])).addSubject(subject);
+		(*student).addSubject(subject);
+		(*student).addMid10(-1);
+		(*student).addFinal10(-1);
+		(*student).addFinal4(-1);
+		(*student).addFinalChar("X");
 	}
 }
 

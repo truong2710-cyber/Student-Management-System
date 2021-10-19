@@ -35,7 +35,7 @@ class Classs{
 		void print();
 		void readCsv(string path);
 		vector<Student> findStudentByName(string name);
-		Student& findStudentByID(int ID);
+		Student* findStudentByID(int ID);
 		void orderByGPA();
 		void orderByName();
 		void getRegisterInfoFromCsv(string path);

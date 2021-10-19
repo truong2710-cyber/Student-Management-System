@@ -153,8 +153,25 @@ void Student::print_info(){
 	}
 	cout<<"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
 	cout<<"*Note: -1 or X mean currently unavailable."<<endl;
+	return;
 }
 
 void Student::addSubject(Subject subject){
 	this->subjects.push_back(subject);
+}
+
+void Student::addMid10(float score){
+	this->scores_mid_10.push_back(score);
+}
+
+void Student::addFinal10(float score){
+	this->scores_final_10.push_back(score);
+}
+
+void Student::addFinal4(float score){
+	this->scores_final_4.push_back(score);
+}
+
+void Student::addFinalChar(string score){
+	this->scores_final_char.push_back(score);
 }

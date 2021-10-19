@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <memory>
 #include "student.h"
 #include "program.h"
 using namespace std;
@@ -34,8 +35,9 @@ class Classs{
 		void deleteStudent(int ID);
 		void print();
 		void readCsv(string path);
+		Student* findpStudentByID(int ID);
+		pair<Student,bool> findStudentByID(int ID);
 		vector<Student> findStudentByName(string name);
-		Student* findStudentByID(int ID);
 		void orderByGPA();
 		void orderByName();
 		void getRegisterInfoFromCsv(string path);

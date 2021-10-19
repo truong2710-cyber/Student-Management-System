@@ -4,6 +4,7 @@
 #include "subject.h"
 #include "classs.h"
 #include "program.h"
+#include <memory>
 using namespace std;
 
 Program initProgram(string name, string path){
@@ -17,7 +18,7 @@ vector<Classs> initClasses(Program program){
 	Classs cl1("CTTN-IT-K64",program);
 	cl1.readCsv("data/basic_data.csv"); 
 	cl1.getRegisterInfoFromCsv("data/register_data.csv");
-	//cout<<cl1.getStudents()[0].getScoresMid10().size()<<endl;
+	//cout<<cl1.getStudents()[0].getSubjects().size()<<endl;
 	classes.push_back(cl1);
 	
 	Classs cl2("IT1-01",program);
@@ -67,15 +68,28 @@ vector<Student> searchByName(vector<Classs> classes, string name){
 	return result;
 }
 
-Student* searchByID(vector<Classs> classes, int ID){
+Student* searchpByID(vector<Classs> &classes, int ID){
+	for (int i=0;i<classes.size();i++){
+		Student* temp=classes[i].findpStudentByID(ID);
+		if (temp!=nullptr){
+			//(*temp).print_info();
+			return classes[i].findpStudentByID(ID);
+		}
+	}
+	return nullptr;
+}
+
+pair<Student,bool> searchByID(vector<Classs> classes, int ID){
+	pair<Student,bool> temp;
 	for (Classs classs:classes){
-		Student* temp=classs.findStudentByID(ID);
-		if (temp!=NULL){
+		temp=classs.findStudentByID(ID);
+		if (temp.second==true){
 			//(*temp).print_info();
 			return temp;
 		}
 	}
-	return NULL;
+	//cout<<"Can not find student with ID "<<ID<<endl;
+	return make_pair(temp.first,false);
 }
 
 void searchStudentInfo(vector<Classs> classes){
@@ -107,13 +121,39 @@ void searchStudentInfo(vector<Classs> classes){
 		int ID;
 		cout<<"Enter ID: ";
 		cin>>ID;
-		Student* result=searchByID(classes,ID);
-		if (result!=NULL){
-			cout<<(*result).getName()<<(*result).getID();
+		pair<Student,bool> result=searchByID(classes,ID);
+		if (result.second==true){
+			(result.first).print_info();
 			return;
 		}
 		cout<<"No result found!"<<endl;
 	}
+}
+
+void updateScore(vector<Classs> &classes){
+	int ID;
+	string code;
+	vector<float> mid,final;
+	float temp;
+	cout<<"Enter ID: ";
+	cin>>ID;
+	Student* student=searchpByID(classes,ID);
+	if (student==nullptr){
+		cout<<"Can not find student with ID "<<ID;
+		return;
+	}
+	for (int i=0;i<(*student).getSubjects().size();i++){
+		cout<<(*student).getSubjects()[i].getCode()<<": "<<(*student).getSubjects()[i].getName()<<endl;
+		cout<<"Enter mid-term score: ";
+		cin>>temp;
+		mid.push_back(temp);
+		cout<<"Enter final exam score: ";
+		cin>>temp;
+		final.push_back(temp);
+	}
+	(*student).print_info();
+	(*student).update_scores(mid,final);
+	cout<<"Score updated successfully!"<<endl;
 }
 
 void printMenu(){
@@ -125,6 +165,7 @@ void printMenu(){
 	cout<<"|3. Update student's score                                           |"<<endl;
 	cout<<"|4. Update student's personal information                            |"<<endl;
 	cout<<"|5. Delete a student from system                                     |"<<endl;
+	cout<<"|6. Exit                                                             |"<<endl;
 	cout<<"+--------------------------------------------------------------------+"<<endl;           
 }
 
@@ -132,22 +173,15 @@ int main(int argc, char** argv) {
 	//test
 	int choice;
 	Program program=initProgram("Talented Program IT","data/education_program.csv");
-	//program.print(); // khoi tao 1 chuong trinh dao tao (vd CTTN IT)
-	// doc danh sach lop (cac thong tin co ban)
 	vector<Classs> classes=initClasses(program);
-	//Classs cl2=classes[0];
-	//cl2.orderByName(); // sap xep theo ten
-	//cl2.print();
-	//cl2.getRegisterInfoFromCsv("data/register_data.csv"); // lay thong tin dang ki lop o file csv
-	// ta da khoi tao 1 lop hoc voi 1 chuong trinh dao tao voi tat ca cac thong tin ve SV trong lop (tru diem thi)
-	//classes[1].getStudents()[0].print_info();
+	while (true){
 	printMenu();
 	cout<<"Please enter your choice: ";
 	do{
 		cin>>choice;
-		if (choice!=1 && choice!=2 && choice!=3 && choice !=4 && choice!=5)
+		if (choice!=1 && choice!=2 && choice!=3 && choice !=4 && choice!=5 && choice!=6)
 			cout<<"Invalid input! Please enter again: ";
-	}while (choice!=1 && choice!=2 && choice!=3 && choice !=4 && choice!=5);
+	}while (choice!=1 && choice!=2 && choice!=3 && choice !=4 && choice!=5 && choice!=6);
 	switch(choice){
 		case 1:
 			printClassInfo(classes);
@@ -156,12 +190,17 @@ int main(int argc, char** argv) {
 			searchStudentInfo(classes);
 			break;
 		case 3:
+			updateScore(classes);
 			break;
 		case 4:
 			break;
 		case 5:
 			break;
+		case 6:
+			cout<<"Bye! See ya later!";
+			return 0;
+			break;
 	}
-		
+	}
 	return 0;
 }

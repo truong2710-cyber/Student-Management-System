@@ -19,7 +19,7 @@ class Student{
 		vector<float> scores_final_4; // diem tong ket cac mon thang 4
 		vector<string> scores_final_char; // diem chu tong ket cac mon (A+,A,...)
 		float GPA=-1;
-		string rank="";   // kem, yeu, TB yeu, TB, kha, gioi, xuat sac
+		string rank="X";   // kem, yeu, TB yeu, TB, kha, gioi, xuat sac
 		int pass=0;		// so tin chi qua
 		int fail=0;	// so tin chi truot
 		int fee=0;     // hoc phi ki nay
@@ -40,6 +40,7 @@ class Student{
 			this->scores_final_10.resize(subjects.size(),-1);
 			this->scores_final_4.resize(subjects.size(),-1);
 			this->scores_final_char.resize(subjects.size(),"X");
+			this->rank="X";
 		}  
 		Student(string name, int ID, string birthday, string native_place, string gender, int cur_ac_level,string class_name){
 			this->name=name;
@@ -49,7 +50,7 @@ class Student{
 			this->gender=gender;
 			this->academic_caution=cur_ac_level;
 			this->class_name=class_name;
-			
+			this->rank="X";
 		}
 		string getName(){
 			return this->name;

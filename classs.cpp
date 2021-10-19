@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <vector>
 #include <algorithm>
+#include <memory>
 using namespace std;
 
 vector<Student> Classs::findStudentByName(string name){
@@ -18,13 +19,24 @@ vector<Student> Classs::findStudentByName(string name){
 	return result;
 }
 
-Student* Classs::findStudentByID(int ID){
+Student* Classs::findpStudentByID(int ID){
 	for (int i=0;i<this->students.size();i++){
 		if (this->students[i].getID()==ID){
-			return &this->students[i];
+			return (&this->students[i]);
 		}	
 	}
-	return NULL;
+	return nullptr;
+}
+
+pair<Student,bool> Classs::findStudentByID(int ID){
+	for (int i=0;i<this->students.size();i++){
+		if (this->students[i].getID()==ID){
+			return make_pair(this->students[i],true);
+		}	
+	}
+	//cout<<"Can not find student with ID "<<ID;
+	Student failed;
+	return make_pair(failed,false);
 }
 
 void Classs::addStudent(Student student){
@@ -148,14 +160,16 @@ void Classs::getRegisterInfoFromCsv(string path){
 	getline(file,line);
 	while(getline(file,line)){
 		vector<string> v=split(line,",");
-		Student* student=this->findStudentByID(stoi(v[1]));
-		if (student==NULL) continue;
+		Student* student=this->findpStudentByID(stoi(v[1]));
+		//cout<<student.getName();
+		if (student==nullptr) continue;
 		Subject subject=this->program.findSubject(v[2]);
 		(*student).addSubject(subject);
 		(*student).addMid10(-1);
 		(*student).addFinal10(-1);
 		(*student).addFinal4(-1);
 		(*student).addFinalChar("X");
+		//cout<<"ok\n";
 	}
 }
 

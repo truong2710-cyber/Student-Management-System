@@ -12,5 +12,5 @@ class Program{
 		Program(string name);
 		void print();
 		void readCsv(string path);
-		Subject findSubject(string code);
+		Subject* findSubject(string code);
 };

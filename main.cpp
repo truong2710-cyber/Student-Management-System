@@ -196,6 +196,68 @@ void deleteStudent(vector<Classs> &classes){
 	cout<<"Can not find student with ID "<<ID<<endl<<endl;
 }
 
+bool checkDuplicate(vector<Classs> &classes, int ID){
+	Student* student=searchByID(classes,ID);
+	if (student!=nullptr) 
+		return true;
+	return false;
+}
+
+Classs* findClass(vector<Classs> &classes, string name){
+	for (int i=0;i<classes.size();i++){
+		if (classes[i].getName()==name)
+			return &classes[i];
+	}
+	return nullptr;
+}
+
+void addStudent(vector<Classs> &classes,Program program){
+	int ID,academic_caution_level,num_subjects;
+	string name,birthday,native_place,gender,code,class_name;
+	vector<Subject> subjects;
+	cout<<"Enter ID: ";
+	do{
+		cin>>ID;
+		if (checkDuplicate(classes,ID))
+			cout<<"ID already exists! Please enter another ID: ";
+	} while(checkDuplicate(classes,ID));
+	cin.ignore();
+	cout<<"Class name: ";
+	do{
+		getline(cin,class_name);
+		if (findClass(classes,class_name)==nullptr)
+			cout<<"Can not find class "<<class_name<<"! Please enter again: ";
+	} while (findClass(classes,class_name)==nullptr);
+	Classs* classs=findClass(classes,class_name);
+	cout<<"Name: ";
+	getline(cin,name);
+	cout<<"Date of birth: ";
+	getline(cin,birthday);
+	cout<<"Native place: ";
+	getline(cin,native_place);
+	cout<<"Gender: ";
+	getline(cin,gender);
+	cout<<"Academic caution level: ";
+	cin>>academic_caution_level;
+	cout<<"Enter number of subjects: ";
+	cin>>num_subjects;
+	cout<<"Enter subject codes: "<<endl;
+	cin.ignore();
+	for (int i=0;i<num_subjects;i++){
+		cout<<i+1<<". ";
+		do{
+			getline(cin,code);
+			if (program.findSubject(code)==nullptr)
+				cout<<"Error: Can not find subject with code "<<code<<". Please enter again: "<<endl;
+		} while(program.findSubject(code)==nullptr);
+		subjects.push_back(*program.findSubject(code));
+	}
+	Student student(name,ID,birthday,native_place,gender,class_name,subjects,academic_caution_level);
+	(*classs).addStudent(student);
+	cout<<"Student with ID "<<ID<<" is added to class "<<class_name<<" successfully!"<<endl;
+	(*classs).print();
+}
+
 void printMenu(){
 	cout<<"+--------------------------------------------------------------------+"<<endl;
 	cout<<"|                     STUDENT MANAGEMENT SYSTEM                      |"<<endl;
@@ -205,9 +267,10 @@ void printMenu(){
 	cout<<"|3. Search student information                                       |"<<endl;
 	cout<<"|4. Update student's score                                           |"<<endl;
 	cout<<"|5. Update student's personal information                            |"<<endl;
-	cout<<"|6. Delete a student from system                                     |"<<endl;
-	cout<<"|7. Clear console                                                    |"<<endl;
-	cout<<"|8. Exit                                                             |"<<endl;
+	cout<<"|6. Add a student to system                                          |"<<endl;
+	cout<<"|7. Delete a student from system                                     |"<<endl;
+	cout<<"|8. Clear console                                                    |"<<endl;
+	cout<<"|9. Exit                                                             |"<<endl;
 	cout<<"+--------------------------------------------------------------------+"<<endl;           
 }
 
@@ -221,9 +284,9 @@ int main(int argc, char** argv) {
 		cout<<"Please enter your choice: ";
 		do{
 			cin>>choice;
-			if (choice!=1 && choice!=2 && choice!=3 && choice !=4 && choice!=5 && choice!=6 && choice!=7 && choice!=8)
+			if (choice!=1 && choice!=2 && choice!=3 && choice !=4 && choice!=5 && choice!=6 && choice!=7 && choice!=8 && choice!=9)
 				cout<<"Invalid input! Please enter again: ";
-		} while (choice!=1 && choice!=2 && choice!=3 && choice !=4 && choice!=5 && choice!=6 && choice!=7 && choice!=8);
+		} while (choice!=1 && choice!=2 && choice!=3 && choice !=4 && choice!=5 && choice!=6 && choice!=7 && choice!=8 && choice!=9);
 		switch(choice){
 			case 1:
 				printClassInfo(classes);
@@ -241,12 +304,15 @@ int main(int argc, char** argv) {
 				updateInfo(classes);
 				break;
 			case 6:
-				deleteStudent(classes);
+				addStudent(classes,program);
 				break;
 			case 7:
-				system("cls");
+				deleteStudent(classes);
 				break;
 			case 8:
+				system("cls");
+				break;
+			case 9:
 				cout<<"Bye! See ya later!";
 				return 0;
 				break;

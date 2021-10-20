@@ -71,10 +71,11 @@ void Program::print(){
 	cout<<"-------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
 }
 
-Subject Program::findSubject(string code){
+Subject* Program::findSubject(string code){
 	for (int i=0;i<this->subjects.size();i++){
 		if (this->subjects[i].getCode()==code)
-			return this->subjects[i];
+			return &this->subjects[i];
 	}
-	cout<<"Error: Can not find subject with code "<<code<<" in education program!"<<endl;
+	//cout<<"Error: Can not find subject with code "<<code<<" in education program!"<<endl;
+	return nullptr;
 }

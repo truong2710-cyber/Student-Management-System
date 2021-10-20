@@ -31,6 +31,7 @@ Student* Classs::findStudentByID(int ID){
 void Classs::addStudent(Student student){
 	// ham them 1 sinh vien vao lop 
 	this->students.push_back(student);
+	this->class_size++;
 }
 
 bool Classs::deleteStudent(int ID){
@@ -152,7 +153,7 @@ void Classs::getRegisterInfoFromCsv(string path){
 		Student* student=this->findStudentByID(stoi(v[1]));
 		//cout<<student.getName();
 		if (student==nullptr) continue;
-		Subject subject=this->program.findSubject(v[2]);
+		Subject subject=*this->program.findSubject(v[2]);
 		(*student).addSubject(subject);
 		(*student).addMid10(-1);
 		(*student).addFinal10(-1);

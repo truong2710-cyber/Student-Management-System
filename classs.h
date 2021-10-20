@@ -32,11 +32,10 @@ class Classs{
 			return this->class_name;
 		}
 		void addStudent(Student student);
-		void deleteStudent(int ID);
+		bool deleteStudent(int ID);
 		void print();
 		void readCsv(string path);
-		Student* findpStudentByID(int ID);
-		pair<Student,bool> findStudentByID(int ID);
+		Student* findStudentByID(int ID);
 		vector<Student> findStudentByName(string name);
 		void orderByGPA();
 		void orderByName();

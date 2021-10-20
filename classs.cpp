@@ -19,7 +19,7 @@ vector<Student> Classs::findStudentByName(string name){
 	return result;
 }
 
-Student* Classs::findpStudentByID(int ID){
+Student* Classs::findStudentByID(int ID){
 	for (int i=0;i<this->students.size();i++){
 		if (this->students[i].getID()==ID){
 			return (&this->students[i]);
@@ -28,38 +28,27 @@ Student* Classs::findpStudentByID(int ID){
 	return nullptr;
 }
 
-pair<Student,bool> Classs::findStudentByID(int ID){
-	for (int i=0;i<this->students.size();i++){
-		if (this->students[i].getID()==ID){
-			return make_pair(this->students[i],true);
-		}	
-	}
-	//cout<<"Can not find student with ID "<<ID;
-	Student failed;
-	return make_pair(failed,false);
-}
-
 void Classs::addStudent(Student student){
 	// ham them 1 sinh vien vao lop 
 	this->students.push_back(student);
 }
 
-void Classs::deleteStudent(int ID){
+bool Classs::deleteStudent(int ID){
 	// ham xoa 1 sinh vien co MSSV cho truoc
 	for (int i=0;i<students.size();i++){
 		if (students[i].getID()==ID){
 			this->students.erase(students.begin()+i);
 			class_size--;
-			return;
+			return true;
 		}
 	}
-	cout<<"Error: Can not find student with ID "<<ID<<endl;
+	return false;
 }
 
 void Classs::print(){
 	// ham in danh sach lop
 	cout<<"-----------------------------------------------------------------------------------------------------"<<endl;
-	cout<<"Class: "<<this->class_name<<endl;
+	cout<<"Class: "<<this->class_name<<endl<<"Size: "<<this->class_size<<endl;
 	cout<<"-----------------------------------------------------------------------------------------------------"<<endl;
 	cout<<"|"
 		<<left
@@ -160,7 +149,7 @@ void Classs::getRegisterInfoFromCsv(string path){
 	getline(file,line);
 	while(getline(file,line)){
 		vector<string> v=split(line,",");
-		Student* student=this->findpStudentByID(stoi(v[1]));
+		Student* student=this->findStudentByID(stoi(v[1]));
 		//cout<<student.getName();
 		if (student==nullptr) continue;
 		Subject subject=this->program.findSubject(v[2]);

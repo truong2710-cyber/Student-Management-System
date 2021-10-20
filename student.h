@@ -55,20 +55,35 @@ class Student{
 		string getName(){
 			return this->name;
 		}
+		void setName(string name){
+			this->name=name;
+		}
 		int getID(){
 			return this->ID;
 		}
 		string getBirthday(){
 			return this->birthday;
 		}
+		void setBirthday(string birthday){
+			this->birthday=birthday;
+		}
 		string getNativePlace(){
 			return this->native_place;
+		}
+		void setNativePlace(string native_place){
+			this->native_place=native_place;
 		}
 		string getGender(){
 			return this->gender;
 		}
+		void setGender(string gender){
+			this->gender=gender;
+		}
 		string getClassName(){
 			return this->class_name;
+		}
+		void setClassName(string class_name){
+			this->class_name=class_name;
 		}
 		vector<Subject> getSubjects(){
 			return this->subjects;

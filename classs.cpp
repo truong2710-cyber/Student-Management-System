@@ -8,6 +8,8 @@
 #include <vector>
 #include <algorithm>
 #include <memory>
+#include <cstdio>
+#include <cstring>
 using namespace std;
 
 vector<Student> Classs::findStudentByName(string name){
@@ -34,14 +36,61 @@ void Classs::addStudent(Student student){
 	this->class_size++;
 }
 
+int extractID(string line){
+	//ham trich xuat ID tu 1 row trong file csv
+	int start=line.find(',');
+	int end=line.find(',',start+1);
+	return stoi(line.substr(start+1,end-start-1));
+}
+
 bool Classs::deleteStudent(int ID){
 	// ham xoa 1 sinh vien co MSSV cho truoc
+	string line;
+	int id,check=0;
+	string filename=path.substr(5);
+	const char* datapath = filename.c_str();
+	
 	for (int i=0;i<students.size();i++){
 		if (students[i].getID()==ID){
 			this->students.erase(students.begin()+i);
 			class_size--;
-			return true;
+			check=1;
+			break;
 		}
+	}
+	
+	if (check){
+		ifstream file;
+		ofstream newfile;
+		
+		file.open("register_data.csv");
+		newfile.open("newfile1.csv");
+		getline(file,line);
+		newfile<<line<<endl;
+		while(getline(file,line)){
+			id=extractID(line);
+			if (id!=ID) newfile<<line<<endl;
+		}
+		file.close();
+		newfile.close();
+		remove("register_data.csv");
+		rename("newfile1.csv","register_data.csv");
+		
+	
+		file.open(path.substr(5));
+		newfile.open("newfile.csv");
+		getline(file,line);
+		newfile<<line<<endl;
+		while(getline(file,line)){
+			id=extractID(line);
+			if (id!=ID) newfile<<line<<endl;
+		}
+		file.close();
+		newfile.close();
+		remove(datapath);
+		rename("newfile.csv",datapath);
+		
+		return true;
 	}
 	return false;
 }
@@ -104,22 +153,23 @@ void Classs::print(){
 	return;
 }
 
-vector<string> split (string s, string delimiter) {
-    size_t pos_start = 0, pos_end, delim_len = delimiter.length();
+vector<string> split(string s,string delimiter){
+	//ham tach cac thanh phan trong 1 row cua file csv
+    size_t pos_start=0,pos_end,delim_len=delimiter.length();
     string token;
     vector<string> res;
 
-    while ((pos_end = s.find (delimiter, pos_start)) != string::npos) {
-        token = s.substr (pos_start, pos_end - pos_start);
-        pos_start = pos_end + delim_len;
+    while ((pos_end=s.find(delimiter,pos_start))!=string::npos){
+        token=s.substr(pos_start,pos_end-pos_start);
+        pos_start=pos_end+delim_len;
         res.push_back (token);
     }
 
-    res.push_back (s.substr (pos_start));
+    res.push_back(s.substr(pos_start));
     return res;
 }
 
-void Classs::readCsv(string path){
+void Classs::readCsv(){
 	// doc file csv de co duoc cac thong tin co ban ve sv trong lop: ten, MSSV, que quan, gioi tinh, ngay sinh, muc canh cao hien tai
 	vector<Student> list;
 	int count=0;
@@ -138,9 +188,11 @@ void Classs::readCsv(string path){
 	}
 	this->students=list;
 	this->class_size=count;
+	file.close();
 }
 
 void Classs::getRegisterInfoFromCsv(string path){
+	//lay thong tin dang ki hp tu file csv
 	ifstream file(path);
 	if (!file.is_open()) {
 		cout<<"Error: Can not open file!";
@@ -151,7 +203,6 @@ void Classs::getRegisterInfoFromCsv(string path){
 	while(getline(file,line)){
 		vector<string> v=split(line,",");
 		Student* student=this->findStudentByID(stoi(v[1]));
-		//cout<<student.getName();
 		if (student==nullptr) continue;
 		Subject subject=*this->program.findSubject(v[2]);
 		(*student).addSubject(subject);
@@ -159,11 +210,12 @@ void Classs::getRegisterInfoFromCsv(string path){
 		(*student).addFinal10(-1);
 		(*student).addFinal4(-1);
 		(*student).addFinalChar("X");
-		//cout<<"ok\n";
 	}
+	file.close();
 }
 
 bool criterionName(Student s1, Student s2){
+	//dinh nghia thu tu cua ten (Vietnam)
 	string name1=s1.getName(),name2=s2.getName();
 	size_t index1, index2, index3, index4;
 	index1=name1.find(" ");
@@ -182,9 +234,11 @@ bool criterionGPA(Student s1, Student s2){
 }
 
 void Classs::orderByGPA(){
+	//sap xep theo GPA
 	sort(this->students.begin(),this->students.end(),criterionGPA);
 }
 void Classs::orderByName(){
+	//sap xep theo ten
 	sort(this->students.begin(),this->students.end(),criterionName);
 }
 

@@ -10,9 +10,12 @@ using namespace std;
 Program::Program(string name){
 	this->name=name;
 }
+
 Program::Program(){
 }
+
 void Program::readCsv(string path){
+	//doc file csv de lay chuong trinh dao tao
 	string line;
 	ifstream file(path);
 	if (!file.is_open()) {
@@ -28,6 +31,7 @@ void Program::readCsv(string path){
 }
 
 void Program::print(){
+	//in ra chuong trinh dao tao
 	cout<<"-------------------------------------------------------------------------------------------------------------------------"<<endl;
 	cout<<this->name<<endl;
 	cout<<"-------------------------------------------------------------------------------------------------------------------------"<<endl;
@@ -72,10 +76,10 @@ void Program::print(){
 }
 
 Subject* Program::findSubject(string code){
+	//tim mon hoc trong chuong trinh dao tao 
 	for (int i=0;i<this->subjects.size();i++){
 		if (this->subjects[i].getCode()==code)
 			return &this->subjects[i];
 	}
-	//cout<<"Error: Can not find subject with code "<<code<<" in education program!"<<endl;
 	return nullptr;
 }

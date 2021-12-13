@@ -5,7 +5,10 @@
 #include "classs.h"
 #include "program.h"
 #include <memory>
+#include <fstream>
+#include <windows.h>
 using namespace std;
+int class_index=-1;
 
 Program initProgram(string name, string path){
 	Program program(name);
@@ -15,14 +18,13 @@ Program initProgram(string name, string path){
 
 vector<Classs> initClasses(Program program){
 	vector<Classs> classes;
-	Classs cl1("CTTN-IT-K64",program);
-	cl1.readCsv("data/basic_data.csv"); 
+	Classs cl1("ET-E9",program,"data/basic_data.csv");
+	cl1.readCsv(); 
 	cl1.getRegisterInfoFromCsv("data/register_data.csv");
-	//cout<<cl1.getStudents()[0].getSubjects().size()<<endl;
 	classes.push_back(cl1);
 	
-	Classs cl2("IT1-01",program);
-	cl2.readCsv("data/basic_data2.csv"); 
+	Classs cl2("ET1-01",program,"data/basic_data2.csv");
+	cl2.readCsv(); 
 	cl2.getRegisterInfoFromCsv("data/register_data.csv");
 	classes.push_back(cl2);
 	
@@ -55,7 +57,6 @@ void printClassInfo(vector<Classs> classes){
 				if (i==1) classs.orderByName();
 				if (i==2) classs.orderByGPA();
 				classs.print();
-				//return;
 				found=true;
 			}
 		}
@@ -84,7 +85,8 @@ Student* searchByID(vector<Classs> &classes, int ID){
 	for (int i=0;i<classes.size();i++){
 		Student* temp=classes[i].findStudentByID(ID);
 		if (temp!=nullptr){
-			return classes[i].findStudentByID(ID);
+			class_index=i;
+			return temp;
 		}
 	}
 	return nullptr;
@@ -155,11 +157,12 @@ void updateScore(vector<Classs> &classes){
 }
 
 void updateInfo(vector<Classs> &classes){
-	int ID;
+	int ID,id;
 	float temp;
-	string name,birthday,native_place,gender;
+	string line,name,birthday,native_place,gender;
 	cout<<"Enter ID: ";
 	cin>>ID;
+	
 	Student* student=searchByID(classes,ID);
 	if (student==nullptr){
 		cout<<"Can not find student with ID "<<ID<<endl;
@@ -179,6 +182,41 @@ void updateInfo(vector<Classs> &classes){
 	cout<<"Gender: "; 
 	getline(cin,gender);
 	(*student).setGender(gender);
+	
+	ifstream file;
+	ofstream newfile;
+		
+	file.open("register_data.csv");
+	newfile.open("newfile1.csv");
+	getline(file,line);
+	newfile<<line<<endl;
+	while(getline(file,line)){
+		id=extractID(line);
+		if (id!=ID) newfile<<line<<endl;
+		else newfile<<name<<line.substr(line.find(','))<<endl;
+	}
+	file.close();
+	newfile.close();
+	remove("register_data.csv");
+	rename("newfile1.csv","register_data.csv");
+	
+	string filename=classes[class_index].getPath().substr(5);
+	const char* datapath = filename.c_str();
+	
+	file.open(datapath);
+	newfile.open("newfile.csv");
+	getline(file,line);
+	newfile<<line<<endl;
+	while(getline(file,line)){
+		id=extractID(line);
+		if (id!=ID) newfile<<line<<endl;
+		else newfile<<name<<","<<id<<","<<birthday<<","<<native_place<<","<<gender<<line.substr(line.rfind(','))<<endl;
+	}
+	file.close();
+	newfile.close();
+	remove(datapath);
+	rename("newfile.csv",datapath);
+	
 	cout<<"Information updated successfully!"<<endl;
 	(*student).print_info();
 }
@@ -187,6 +225,7 @@ void deleteStudent(vector<Classs> &classes){
 	int ID;
 	cout<<"Enter ID: ";
 	cin>>ID;
+	
 	for (int i=0;i<classes.size();i++){
 		if (classes[i].deleteStudent(ID)){
 			cout<<"Student with ID "<<ID<<" is removed successfully!"<<endl<<endl;
@@ -243,6 +282,13 @@ void addStudent(vector<Classs> &classes,Program program){
 	cin>>num_subjects;
 	cout<<"Enter subject codes: "<<endl;
 	cin.ignore();
+	
+	ofstream regfile;
+	regfile.open("data/register_data.csv",ios_base::app);
+	if (!regfile.is_open()) {
+		cout<<"Error: Can not open file!";
+		return;
+	}
 	for (int i=0;i<num_subjects;i++){
 		cout<<i+1<<". ";
 		do{
@@ -250,10 +296,21 @@ void addStudent(vector<Classs> &classes,Program program){
 			if (program.findSubject(code)==nullptr)
 				cout<<"Error: Can not find subject with code "<<code<<". Please enter again: "<<endl;
 		} while(program.findSubject(code)==nullptr);
-		subjects.push_back(*program.findSubject(code));
+		Subject sub=*program.findSubject(code);
+		subjects.push_back(sub);
+		regfile<<name<<","<<ID<<","<<code<<","<<sub.getName()<<","<<sub.getCredit()<<endl;
 	}
+	regfile.close();
 	Student student(name,ID,birthday,native_place,gender,class_name,subjects,academic_caution_level);
 	(*classs).addStudent(student);
+	ofstream file;
+	file.open((*classs).getPath(),ios_base::app);
+	if (!file.is_open()) {
+		cout<<"Error: Can not open file!";
+		return;
+	}
+	file<<name<<","<<ID<<","<<birthday<<","<<native_place<<","<<gender<<","<<academic_caution_level<<endl;
+	file.close();
 	cout<<"Student with ID "<<ID<<" is added to class "<<class_name<<" successfully!"<<endl;
 	(*classs).print();
 }
@@ -277,8 +334,9 @@ void printMenu(){
 int main(int argc, char** argv) {
 	//test
 	int choice;
-	Program program=initProgram("Talented Program IT","data/education_program.csv");
+	Program program=initProgram("ET Program","data/education_program.csv");
 	vector<Classs> classes=initClasses(program);
+	if (!SetCurrentDirectory(".\\data")) cout<<"Error! Can not find data!"<<endl;
 	while (true){
 		printMenu();
 		cout<<"Please enter your choice: ";

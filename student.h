@@ -12,7 +12,7 @@ class Student{
 		string birthday;
 		string gender;
 		string class_name;    // lop cua sinh vien
-		vector<Subject> subjects;  // subjects of a student in this semester
+		vector<Subject> subjects;  // cac mon hoc ki nay
 		int academic_caution=0; // muc canh cao
 		vector<float> scores_mid_10; // diem qua trinh cac mon thang 10
 		vector<float> scores_final_10; // diem ck cac mon thang 10
@@ -130,5 +130,5 @@ class Student{
 		int getFee();
 		void update_scores(vector<float> scores_mid_10, vector<float> scores_final_10);               
 		// nhap diem qt va ck, dong thoi tinh toan diem thang 4, diem chu, gpa, muc canh cao, xep hang, tin chi qua, khong qua
-		void print_info();		// in ra ttin sv
+		void print_info();		// in ra thong tin sv
 };

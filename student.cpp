@@ -38,11 +38,14 @@ string convert_10_to_char(float score){
 	return "F"; // F
 }
 // implement mot so ham phuc tap cua class Student trong student.h
-void Student::update_scores(vector<float> scores_mid_10, vector<float> scores_final_10){
+void Student::update_scores(vector<float> mid, vector<float> final){
 	int count=0,count_credit=0;
 	float GPA=0;
-	this->scores_mid_10=scores_mid_10;
-	this->scores_final_10=scores_final_10;
+	for (int i=0; i<this->scores_mid_10.size(); i++){
+		if (mid[i]!=-1) this->scores_mid_10[i]=mid[i];
+		if (final[i]!=-1) this->scores_final_10[i]=final[i];
+	}
+	fail=pass=0;
 	for (int i=0;i<this->scores_mid_10.size();i++){
 		if (this->scores_mid_10[i]!=-1 && this->scores_final_10[i]!=-1){
 			float mid_term_weight=this->subjects[i].getWeight();
@@ -59,6 +62,7 @@ void Student::update_scores(vector<float> scores_mid_10, vector<float> scores_fi
 		}
 	}
 	if (count==this->scores_mid_10.size()){
+		//neu da co diem het cac mon thi cap nhat GPA, canh cao 
 		GPA/=count_credit;
 		this->GPA=GPA;
 		this->rank=convert_GPA_to_rank(GPA);
@@ -72,7 +76,7 @@ void Student::update_scores(vector<float> scores_mid_10, vector<float> scores_fi
 }
 
 int Student::getFee(){
-	//tinh hoc phi dua vao so tin chi hoc phi cua Subjects ma sv do dki (don vi VND)
+	//tinh hoc phi dua vao so tin chi hoc phi cua Subjects ma sinh vien do dang ki (don vi VND)
 	int count_fee_unit=0;
 	for (int i=0;i<this->subjects.size();i++){
 		count_fee_unit+=this->subjects[i].getFeeCredit();

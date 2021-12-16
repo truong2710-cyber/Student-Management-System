@@ -10,9 +10,12 @@ using namespace std;
 Program::Program(string name){
 	this->name=name;
 }
+
 Program::Program(){
 }
+
 void Program::readCsv(string path){
+	//doc file csv de lay chuong trinh dao tao
 	string line;
 	ifstream file(path);
 	if (!file.is_open()) {
@@ -28,12 +31,13 @@ void Program::readCsv(string path){
 }
 
 void Program::print(){
-	cout<<"-------------------------------------------------------------------------------------------------------------------------"<<endl;
+	//in ra chuong trinh dao tao
+	cout<<"-----------------------------------------------------------------------------------------------------"<<endl;
 	cout<<this->name<<endl;
-	cout<<"-------------------------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<"-----------------------------------------------------------------------------------------------------"<<endl;
 	cout<<"|"
 		<<left
-		<<setw(60)
+		<<setw(40)
 		<<"Name"<<"|"
 		<<left
 		<<setw(10)
@@ -48,11 +52,11 @@ void Program::print(){
 		<<setw(15)
 		<<"Fee credit"<<"|"
 		<<endl;
-	cout<<"-------------------------------------------------------------------------------------------------------------------------"<<endl;
+	cout<<"-----------------------------------------------------------------------------------------------------"<<endl;
 	for(int i=0;i<this->subjects.size();i++){
 		cout<<"|"
 			<<left
-			<<setw(60)
+			<<setw(40)
 			<<this->subjects[i].getName()<<"|"
 			<<left
 			<<setw(10)
@@ -68,14 +72,14 @@ void Program::print(){
 			<<this->subjects[i].getFeeCredit()<<"|"
 			<<endl;
 	}
-	cout<<"-------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
+	cout<<"-----------------------------------------------------------------------------------------------------"<<endl<<endl;
 }
 
 Subject* Program::findSubject(string code){
+	//tim mon hoc trong chuong trinh dao tao 
 	for (int i=0;i<this->subjects.size();i++){
 		if (this->subjects[i].getCode()==code)
 			return &this->subjects[i];
 	}
-	//cout<<"Error: Can not find subject with code "<<code<<" in education program!"<<endl;
 	return nullptr;
 }

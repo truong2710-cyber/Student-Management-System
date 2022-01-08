@@ -1,4 +1,4 @@
-# Student-Management-System
+# Student Management System
 Using C++ and Qt Framework to make a simple SMS
 
 System requirement:

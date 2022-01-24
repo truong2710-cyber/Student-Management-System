@@ -1,12 +1,7 @@
 Name,ID,Date of birth,Native place,Gender,Academic caution level
-Nguyen Van A,20190101,02/03/2001,Ha Nam,male,0
-Nguyen Ngan H,20193231,20/1/2001,Can Tho,female,0
+Nguyen Van A,20190101,3/5/2001,Ha Noi,male,0
+Nguyen Van B,20193231,20/1/2001,Can Tho,male,0
 Tran Thu C,20198673,3/3/2001,Phu Tho,female,1
 Hoang Ngoc D,20192311,4/4/2001,Nghe An,female,0
 Cao Van E,20193884,5/5/2001,Ha Tinh,male,0
 Nguyen Ngoc Mai,20193308,31/8/2001,Nghe An,female,0
-Nguyen Ngoc Mai,20193310,31/8/2003,Nghe An,female,2
-Nguyen Ngoc Mai,20193311,31/8/2004,Nghe An,female,3
-Nguyen Ngoc Mai,20193312,31/8/2005,Nghe An,female,4
-Nguyen Ngoc Mai,20193313,31/8/2006,Nghe An,female,5
-An Quoc T,20190012,01/01/2000,Ha Noi,male,1

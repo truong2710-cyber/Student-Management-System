@@ -1,9 +1,9 @@
 Name,ID,Code,Subject name,Credit
-Nguyen Van A,20190101,ET3220,Dien tu so,3
-Nguyen Van A,20190101,ET2100,Cau truc du lieu va giai thuat,2
-Nguyen Van A,20190101,ET2072,Ly thuyet thong tin,2
-Nguyen Van A,20190101,ET2060,Tin hieu va he thong,3
-Nguyen Van A,20190101,ET2050,Ly thuyet mach,3
+Nguyen Quoc A,20190101,ET3220,Dien tu so,3
+Nguyen Quoc A,20190101,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Quoc A,20190101,ET2072,Ly thuyet thong tin,2
+Nguyen Quoc A,20190101,ET2060,Tin hieu va he thong,3
+Nguyen Quoc A,20190101,ET2050,Ly thuyet mach,3
 Nguyen Van B,20193231,ET3220,Dien tu so,3
 Nguyen Van B,20193231,ET2100,Cau truc du lieu va giai thuat,2
 Nguyen Van B,20193231,ET2072,Ly thuyet thong tin,2
@@ -94,3 +94,177 @@ Vo Van Tam,20190102,ET2050,Ly thuyet mach,3
 Vu Quy S,20191231,ET2072,Ly thuyet thong tin,2
 Vu Quy S,20191231,ET2060,Tin hieu va he thong,3
 Vu Quy S,20191231,ET2050,Ly thuyet mach,3
+Nguyen Hai N,20190107,ET3220,Dien tu so,3
+Nguyen Hai N,20190107,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Hai N,20190107,ET2072,Ly thuyet thong tin,2
+Nguyen Hai N,20190107,ET2060,Tin hieu va he thong,3
+Nguyen Hai N,20190107,ET2050,Ly thuyet mach,3
+Nguyen Hai N,20190107,ET2021,Thuc tap co ban,2
+Tran Van C,20190103,ET3220,Dien tu so,3
+Tran Van C,20190103,ET2100,Cau truc du lieu va giai thuat,2
+Tran Van C,20190103,ET2072,Ly thuyet thong tin,2
+Tran Van C,20190103,ET2060,Tin hieu va he thong,3
+Tran Van C,20190103,ET2050,Ly thuyet mach,3
+Tran Van D,20190104,ET3220,Dien tu so,3
+Tran Van D,20190104,ET2100,Cau truc du lieu va giai thuat,2
+Tran Van D,20190104,ET2072,Ly thuyet thong tin,2
+Tran Van D,20190104,ET2060,Tin hieu va he thong,3
+Tran Van D,20190104,ET2050,Ly thuyet mach,3
+Tran Van A,20190105,ET3220,Dien tu so,3
+Tran Van A,20190105,ET2100,Cau truc du lieu va giai thuat,2
+Tran Van A,20190105,ET2072,Ly thuyet thong tin,2
+Tran Van A,20190105,ET2060,Tin hieu va he thong,3
+Tran Van A,20190105,ET2050,Ly thuyet mach,3
+Tran Ngoc L,20190106,ET3220,Dien tu so,3
+Tran Ngoc L,20190106,ET2100,Cau truc du lieu va giai thuat,2
+Tran Ngoc L,20190106,ET2072,Ly thuyet thong tin,2
+Tran Ngoc L,20190106,ET2060,Tin hieu va he thong,3
+Tran Ngoc L,20190106,ET2050,Ly thuyet mach,3
+Tran Ngoc L,20190106,ET2021,Thuc tap co ban,2
+Tran Ngoc M,20190108,ET3220,Dien tu so,3
+Tran Ngoc M,20190108,ET2100,Cau truc du lieu va giai thuat,2
+Tran Ngoc M,20190108,ET2072,Ly thuyet thong tin,2
+Tran Ngoc M,20190108,ET2060,Tin hieu va he thong,3
+Tran Ngoc M,20190108,ET2050,Ly thuyet mach,3
+Tran Ngoc M,20190108,ET2021,Thuc tap co ban,2
+Tran Quang A,20190109,ET3220,Dien tu so,3
+Tran Quang A,20190109,ET2100,Cau truc du lieu va giai thuat,2
+Tran Quang A,20190109,ET2072,Ly thuyet thong tin,2
+Tran Quang A,20190109,ET2050,Ly thuyet mach,3
+Tran Quang A,20190109,ET2021,Thuc tap co ban,2
+Le Van H,20190110,ET3220,Dien tu so,3
+Le Van H,20190110,ET2100,Cau truc du lieu va giai thuat,2
+Le Van H,20190110,ET2072,Ly thuyet thong tin,2
+Le Van H,20190110,ET2050,Ly thuyet mach,3
+Le Van H,20190110,ET2021,Thuc tap co ban,2
+Le Van K,20190111,ET2100,Cau truc du lieu va giai thuat,2
+Le Van K,20190111,ET2072,Ly thuyet thong tin,2
+Le Van K,20190111,ET2060,Tin hieu va he thong,3
+Le Van K,20190111,ET2050,Ly thuyet mach,3
+Le Van K,20190111,ET2021,Thuc tap co ban,2
+Le Van L,20190112,ET2100,Cau truc du lieu va giai thuat,2
+Le Van L,20190112,ET2072,Ly thuyet thong tin,2
+Le Van L,20190112,ET2060,Tin hieu va he thong,3
+Le Van L,20190112,ET2050,Ly thuyet mach,3
+Le Van L,20190112,ET2021,Thuc tap co ban,2
+Le Thi L,20190113,ET2100,Cau truc du lieu va giai thuat,2
+Le Thi L,20190113,ET2072,Ly thuyet thong tin,2
+Le Thi L,20190113,ET2060,Tin hieu va he thong,3
+Le Thi L,20190113,ET2050,Ly thuyet mach,3
+Le Thi L,20190113,ET2021,Thuc tap co ban,2
+Le Xuan A,20190114,ET2100,Cau truc du lieu va giai thuat,2
+Le Xuan A,20190114,ET2072,Ly thuyet thong tin,2
+Le Xuan A,20190114,ET2060,Tin hieu va he thong,3
+Le Xuan A,20190114,ET2050,Ly thuyet mach,3
+Le Xuan A,20190114,ET2021,Thuc tap co ban,2
+Le Xuan M,20190115,ET2100,Cau truc du lieu va giai thuat,2
+Le Xuan M,20190115,ET2072,Ly thuyet thong tin,2
+Le Xuan M,20190115,ET2060,Tin hieu va he thong,3
+Le Xuan M,20190115,ET2050,Ly thuyet mach,3
+Le Xuan M,20190115,ET2021,Thuc tap co ban,2
+Hoan Quoc C,20190116,ET2100,Cau truc du lieu va giai thuat,2
+Hoan Quoc C,20190116,ET2072,Ly thuyet thong tin,2
+Hoan Quoc C,20190116,ET2060,Tin hieu va he thong,3
+Hoan Quoc C,20190116,ET2050,Ly thuyet mach,3
+Hoan Quoc C,20190116,ET2021,Thuc tap co ban,2
+Hoang Quoc N,20190117,ET2100,Cau truc du lieu va giai thuat,2
+Hoang Quoc N,20190117,ET2072,Ly thuyet thong tin,2
+Hoang Quoc N,20190117,ET2060,Tin hieu va he thong,3
+Hoang Quoc N,20190117,ET2050,Ly thuyet mach,3
+Hoang Quoc N,20190117,ET2021,Thuc tap co ban,2
+Hoang Van A,20190119,ET2100,Cau truc du lieu va giai thuat,2
+Hoang Van A,20190119,ET2072,Ly thuyet thong tin,2
+Hoang Van A,20190119,ET2060,Tin hieu va he thong,3
+Hoang Van A,20190119,ET2050,Ly thuyet mach,3
+Hoang Van A,20190119,ET2021,Thuc tap co ban,2
+Hoang Van L,20190120,ET3220,Dien tu so,3
+Hoang Van L,20190120,ET2100,Cau truc du lieu va giai thuat,2
+Hoang Van L,20190120,ET2072,Ly thuyet thong tin,2
+Hoang Van L,20190120,ET2060,Tin hieu va he thong,3
+Hoang Van L,20190120,ET2050,Ly thuyet mach,3
+Hoang Van L,20190120,ET2021,Thuc tap co ban,2
+Hoang Van L,20190120,JP2112,Tieng nhat 4,0
+Nguyen Quoc A,20194000,ET3220,Dien tu so,3
+Nguyen Quoc A,20194000,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Quoc A,20194000,ET2060,Tin hieu va he thong,3
+Nguyen Quoc A,20194000,ET2050,Ly thuyet mach,3
+Nguyen Quoc A,20194000,ET2021,Thuc tap co ban,2
+Nguyen Quoc K,20194001,ET3220,Dien tu so,3
+Nguyen Quoc K,20194001,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Quoc K,20194001,ET2060,Tin hieu va he thong,3
+Nguyen Quoc K,20194001,ET2050,Ly thuyet mach,3
+Nguyen Quoc K,20194001,ET2021,Thuc tap co ban,2
+Nguyen Van B,20194002,ET3220,Dien tu so,3
+Nguyen Van B,20194002,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Van B,20194002,ET2060,Tin hieu va he thong,3
+Nguyen Van B,20194002,ET2050,Ly thuyet mach,3
+Nguyen Van B,20194002,ET2021,Thuc tap co ban,2
+Nguyen Van C,20194003,ET3220,Dien tu so,3
+Nguyen Van C,20194003,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Van C,20194003,ET2060,Tin hieu va he thong,3
+Nguyen Van C,20194003,ET2050,Ly thuyet mach,3
+Nguyen Van C,20194003,ET2021,Thuc tap co ban,2
+Nguyen Thi L,20194004,ET3220,Dien tu so,3
+Nguyen Thi L,20194004,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Thi L,20194004,ET2060,Tin hieu va he thong,3
+Nguyen Thi L,20194004,ET2050,Ly thuyet mach,3
+Nguyen Thi L,20194004,ET2021,Thuc tap co ban,2
+Nguyen Thi M,20194005,ET3220,Dien tu so,3
+Nguyen Thi M,20194005,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Thi M,20194005,ET2060,Tin hieu va he thong,3
+Nguyen Thi M,20194005,ET2050,Ly thuyet mach,3
+Nguyen Thi M,20194005,ET2021,Thuc tap co ban,2
+Nguyen Lan A,20194006,ET3220,Dien tu so,3
+Nguyen Lan A,20194006,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Lan A,20194006,ET2072,Ly thuyet thong tin,2
+Nguyen Lan A,20194006,ET2060,Tin hieu va he thong,3
+Nguyen Lan A,20194006,ET2050,Ly thuyet mach,3
+Nguyen Lan A,20194006,JP2112,Tieng nhat 4,0
+Nguyen Lan D,20194007,ET3220,Dien tu so,3
+Nguyen Lan D,20194007,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Lan D,20194007,ET2072,Ly thuyet thong tin,2
+Nguyen Lan D,20194007,ET2060,Tin hieu va he thong,3
+Nguyen Lan D,20194007,ET2050,Ly thuyet mach,3
+Nguyen Lan D,20194007,JP2112,Tieng nhat 4,0
+Nguyen Kien C,20194008,ET3220,Dien tu so,3
+Nguyen Kien C,20194008,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Kien C,20194008,ET2072,Ly thuyet thong tin,2
+Nguyen Kien C,20194008,ET2060,Tin hieu va he thong,3
+Nguyen Kien C,20194008,ET2050,Ly thuyet mach,3
+Nguyen Kien C,20194008,JP2112,Tieng nhat 4,0
+Nguyen Phuong N,20194009,ET3220,Dien tu so,3
+Nguyen Phuong N,20194009,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Phuong N,20194009,ET2072,Ly thuyet thong tin,2
+Nguyen Phuong N,20194009,ET2060,Tin hieu va he thong,3
+Nguyen Phuong N,20194009,ET2021,Thuc tap co ban,2
+Nguyen Phuong N,20194009,JP2112,Tieng nhat 4,0
+Nguyen Phuc T,20194010,ET3220,Dien tu so,3
+Nguyen Phuc T,20194010,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Phuc T,20194010,ET2072,Ly thuyet thong tin,2
+Nguyen Phuc T,20194010,ET2060,Tin hieu va he thong,3
+Nguyen Phuc T,20194010,ET2021,Thuc tap co ban,2
+Nguyen Phuc T,20194010,JP2112,Tieng nhat 4,0
+Nguyen Phuc A,20194011,ET3220,Dien tu so,3
+Nguyen Phuc A,20194011,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Phuc A,20194011,ET2072,Ly thuyet thong tin,2
+Nguyen Phuc A,20194011,ET2060,Tin hieu va he thong,3
+Nguyen Phuc A,20194011,ET2021,Thuc tap co ban,2
+Nguyen Phuc A,20194011,JP2112,Tieng nhat 4,0
+Nguyen Phuc A,20194012,ET3220,Dien tu so,3
+Nguyen Phuc A,20194012,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Phuc A,20194012,ET2060,Tin hieu va he thong,3
+Nguyen Phuc A,20194012,ET2050,Ly thuyet mach,3
+Nguyen Phuc A,20194012,ET2021,Thuc tap co ban,2
+Nguyen Phuc A,20194012,JP2112,Tieng nhat 4,0
+Nguyen Kim A,20194013,ET3220,Dien tu so,3
+Nguyen Kim A,20194013,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Kim A,20194013,ET2060,Tin hieu va he thong,3
+Nguyen Kim A,20194013,ET2050,Ly thuyet mach,3
+Nguyen Kim A,20194013,ET2021,Thuc tap co ban,2
+Nguyen Kim A,20194013,JP2112,Tieng nhat 4,0
+Nguyen Kim K,20194014,ET3220,Dien tu so,3
+Nguyen Kim K,20194014,ET2100,Cau truc du lieu va giai thuat,2
+Nguyen Kim K,20194014,ET2060,Tin hieu va he thong,3
+Nguyen Kim K,20194014,ET2050,Ly thuyet mach,3
+Nguyen Kim K,20194014,ET2021,Thuc tap co ban,2
+Nguyen Kim K,20194014,JP2112,Tieng nhat 4,0
